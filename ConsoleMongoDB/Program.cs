@@ -43,9 +43,11 @@ var user = collection.Find(x => x.Id == "69172d5b2e50e2c4e7732800").FirstOrDefau
 
 Console.WriteLine($"\n\nAntes do update:\n{user}");
 
-collection.UpdateOne(
+collection.UpdateMany(
     x => x.Id == "69172d5b2e50e2c4e7732800",
-    Builders<User>.Update.Set(x => x.Password, "senhaa12aaaaa")
+    Builders<User>.Update.Set(x => x.Password, "ultimaSenhaNova")
     );
 
 Console.WriteLine($"\n\nDepois do update:\n{user}");
+
+//collection.DeleteOne(x => x.Id == "69173962ea275c7f62d8f6e8");
