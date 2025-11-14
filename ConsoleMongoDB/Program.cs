@@ -27,14 +27,25 @@ var collection = database.GetCollection<User>("Usuarios");
 //    Console.WriteLine("-----------------------------------------");
 //}
 
-var usuario = collection.Find(x => x.Id == "69172d5b2e50e2c4e7732800").FirstOrDefault();
+//var usuario = collection.Find(x => x.Id == "69172d5b2e50e2c4e7732800").FirstOrDefault();
 //var usuario = collection.Find(x => x.Password == "123@Mudar").ToList();
 
 
 //collection.UpdateOne<User>(x => x.Id == "69172d5b2e50e2c4e7732800", )
 
-Console.WriteLine(usuario);
-usuario.Password = "456@Mudar";
+//Console.WriteLine(usuario);
+//usuario.Password = "456@Mudar";
 
-collection.ReplaceOne(x => x.Id == usuario.Id, usuario);
-Console.WriteLine(usuario);
+//collection.ReplaceOne(x => x.Id == usuario.Id, usuario);
+//Console.WriteLine(usuario);
+
+var user = collection.Find(x => x.Id == "69172d5b2e50e2c4e7732800").FirstOrDefault();
+
+Console.WriteLine($"\n\nAntes do update:\n{user}");
+
+collection.UpdateOne(
+    x => x.Id == "69172d5b2e50e2c4e7732800",
+    Builders<User>.Update.Set(x => x.Password, "senhaa12aaaaa")
+    );
+
+Console.WriteLine($"\n\nDepois do update:\n{user}");
